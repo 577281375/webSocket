@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>websocket</title>
+    <style>
+    #chatroom{
+        width: 200px;
+        height: 480px;
+        border: 2px solid #ddd;
+        color:black;
+        font-size:22px;
+        overflow: auto;
+    }
+    </style>
+</head>
+<body>
+    <h1>websocket</h1>
+    <div id="chatroom"></div>
+    <input type="text" placeholder="请输入" id="sayword">
+    <button id="sendBtn" onclick="send()">发送</button>
+</body>
+<script src="webSocketClient.js"></script>
+<script>
+    function send(){
+        ws.send(sayword.value);
+        sayword.value ="";
+    }
+
+    document.keyup = function(e){
+        if(e.keycode == 13){
+            ws.send(sayword.value);
+            sayword.value ="";
+        }
+    }
+</script>
+</html>
